@@ -1,0 +1,12 @@
+{
+	"name": "clipboard-to-image",
+	"short_name": "CTI",
+	"start_url": "/scripts",
+	"display": "standalone",
+	"background_color": "#fdfdfd",
+	"theme_color": "#2c2c2c",
+	"icons": [
+		{ "src": "images/image.svg", "type": "image/svg+xml", "sizes": "48x48 72x72 96x96 128x128 256x256 512x512", "purpose": "any monochrome maskable" },
+		{ "src": "images/image.png", "type": "image/png", "sizes": "512x512", "purpose": "any" }
+	  ]
+  }

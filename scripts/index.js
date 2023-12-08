@@ -1,5 +1,7 @@
 const mainDiv = document.querySelector(".main");
 
+const repository = location.hostname.split(".")[0];
+
 window.addEventListener("paste", e => {
 	const item = Array.from(e.clipboardData.items).find(x => /^image\//.test(x.type));
 	if (!item) {
@@ -11,16 +13,23 @@ window.addEventListener("paste", e => {
 	img.src = URL.createObjectURL(blob);
 	
 
-	img.onload = _ => {
+	img.onload = () => {
 		mainDiv.innerHTML = "";
 		mainDiv.appendChild(img);
 	};
 });
 
-// navigator.serviceWorker.register("scripts/serviceworker.js");
+
 
 if ("serviceWorker" in navigator) {
-	navigator.serviceWorker.register("/scripts/serviceworker.js").then(
+	// if (/(?<=\.).+/.exec(location.hostname)[0] === "github.io"){
+	// 	navigator.serviceWorker.register("clipboard-to-image/scripts/serviceworker.js").then(
+	// 		registration => console.log("Registered a Service Worker ", registration),
+	// 		error => console.error("Could not register a Service Worker ", error),
+	// 	);
+	// 	return;
+	// }
+	navigator.serviceWorker.register(`serviceworker.js`).then(
 		registration => console.log("Registered a Service Worker ", registration),
 		error => console.error("Could not register a Service Worker ", error),
 	);
